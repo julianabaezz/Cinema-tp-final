@@ -1,9 +1,9 @@
 .login{
     background-color: var(--main-bg-color);
     height: 100vh;
-    background-image: url(/public/img/kill-bill.png);
-    background-position: 80% 90%;
-    background-size: 300px;
+    background-image: url(/public/img/kill-bill.png), url(/public/img/blood.png);
+    background-position: 80% 90%, 7% 85%;
+    background-size: 300px, 500px;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
