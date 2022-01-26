@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Notable&display=swap');
+body {
+  margin: 0;
+  --main-bg-color: #F7CD03;
+}
+.typo{
+  font-family: 'Notable';
+
+}
+
+.navbar{
+  background-color: var(--main-bg-color);
+}
