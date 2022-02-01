@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 const Footer = () =>{
     return(
-        <footer className="bg-dark text-center text-white">
+        <footer className="bg-dark text-center text-white sticky-bottom">
         <div className="container p-3">
             Hecho con ❤️ por juliana baez       
         </div>
