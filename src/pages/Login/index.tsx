@@ -32,7 +32,7 @@ const Login = () => {
                     </Link>
                 </div>
                 <div className= "mt-2 align-self-start">
-                    <Link className= "link-dark" to="/">
+                    <Link className= "link-dark" to="#">
                         Olvidé mi contraseña
                     </Link>
                 </div>
