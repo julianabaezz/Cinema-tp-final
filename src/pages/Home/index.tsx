@@ -1,15 +1,11 @@
 import { Layout } from "../../components";
 
-
-
-
-
 const Home = () => {
     return (
         <Layout>
             <div className="container-fluid home">
-                <h1 className="typo">Home</h1>
-                <div className="row row-cols-3 g-5 m-2">
+                <h1 className="typo">Home</h1>                
+                <div className="row row-cols-3 g-5 p-3">
                     <div className="col">
                         <div className="card h-100">
                             <img src="/img/pikachu.png" className="card-img-top" alt="..."/>

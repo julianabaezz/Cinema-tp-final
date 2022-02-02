@@ -1,6 +1,9 @@
+import { Layout } from "../../components"
 const Series  = () => {
     return(
-        <h2>Series</h2>
+        <Layout>
+            <h2>Series</h2>
+        </Layout>
     )
 }
 

@@ -4,12 +4,12 @@ import './pages/Home/home.css'
 import './pages/Login/login.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Home, Login, Signup, Admin, Detail, Movies, Series, Users } from './pages';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
 function App() {
   return(
-    <BrowserRouter> 
+    <Router> 
       <Switch>
         <Route path='/admin' component={Admin}/>
         <Route path='/detail' component={Detail}/>
@@ -20,7 +20,7 @@ function App() {
         <Route path='/users' component={Users}/>
         <Route path='/' component={Home}/>
       </Switch>
-    </BrowserRouter> 
+    </Router> 
 
   )
 }

@@ -1,6 +1,9 @@
+import { Layout } from "../../components"
 const Movies  = () => {
     return(
-        <h2>Movies</h2>
+        <Layout>
+            <h2>Movies</h2>
+        </Layout>
     )
 }
 
