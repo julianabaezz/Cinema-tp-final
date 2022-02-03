@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import './pages/Home/home.css'
 import './pages/Login/login.css'
+import './components/layout/Layout/layout.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Home, Login, Signup, Admin, Detail, Movies, Series, Users } from './pages';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';

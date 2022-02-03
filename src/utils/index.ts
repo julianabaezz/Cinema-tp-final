@@ -1,1 +1,1 @@
-export {api_movies} from "./axios"
+export {api_movies, api_users} from "./axios"

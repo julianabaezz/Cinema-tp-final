@@ -1,5 +1,9 @@
 import axios from "axios";
 
+const api_users = axios.create({
+    baseURL: "https://cinemada-c5234-default-rtdb.firebaseio.com/"
+})
+
 const api_movies = axios.create({
     baseURL: "https://api.themoviedb.org/3/", 
     params:{
@@ -7,4 +11,4 @@ const api_movies = axios.create({
     }
 })
 
-export {api_movies}
+export {api_movies, api_users}

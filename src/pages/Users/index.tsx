@@ -1,8 +1,12 @@
+import { FC } from "react"
 import { Layout } from "../../components"
-const Users  = () => {
+import { UsersTable } from "../../components/parts"
+
+const Users: FC  = () => {
     return(
         <Layout>
-            <h2>Users</h2>
+            <UsersTable/>
+            
         </Layout>
         
     )
