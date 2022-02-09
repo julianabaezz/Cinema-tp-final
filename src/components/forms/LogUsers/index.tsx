@@ -1,9 +1,15 @@
-import { FC } from "react"
+import { FC, FormEvent } from "react"
 import { Link } from "react-router-dom"
 
 const LogUsers: FC = () =>{
+    const handleSubmit = (e:FormEvent) =>{
+        e.preventDefault()
+        console.log("entre")
+
+    }
+
     return(
-        <form className="mb-3">
+        <form className="mb-3" onSubmit={handleSubmit}>
                 <div className="mb-3 fs-5">
                     <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
                     <input
