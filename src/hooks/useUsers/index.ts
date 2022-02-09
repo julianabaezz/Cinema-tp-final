@@ -1,10 +1,12 @@
 // import { usersApi } from "../../api";
+import { AddUserType } from "../../types/models";
 
 const useUsers = () =>{
-    // const addUser= () =>{
+    const addUser= (datos: AddUserType) =>{
 
-    //     usersApi.
-    // }
+        
+    };
+    return {addUser}
 }
 
 export {useUsers}

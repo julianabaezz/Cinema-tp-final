@@ -2,7 +2,7 @@ import * as yup from 'yup';
 import { FORM_VALIDATIONS } from '../../../constants/formValidations';
 
 export const validationSchema = yup.object().shape({
-    firstName: yup
+    name: yup
         .string()
         .required(FORM_VALIDATIONS.REQUIRED),
     lastName: yup
@@ -10,7 +10,7 @@ export const validationSchema = yup.object().shape({
         .required(FORM_VALIDATIONS.REQUIRED),
     date: yup
         .date()
-        .notRequired(),
+        .required(FORM_VALIDATIONS.REQUIRED),
     email: yup
         .string()
         .email(FORM_VALIDATIONS.WRONG_FORMAT)
@@ -19,7 +19,7 @@ export const validationSchema = yup.object().shape({
         .string()
         .required(FORM_VALIDATIONS.REQUIRED)
         .min(8, FORM_VALIDATIONS.SIZE)
-        .matches(/^(?=.*[a-z])(?=.*\d)[a-z\d\w\W]{8,}$/)
+        // .matches(/^(?=.*[a-z])(?=.*\d)[a-z\d\w\W]{8,}$/)
 
     
 })
