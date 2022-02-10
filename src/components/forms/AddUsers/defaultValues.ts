@@ -1,7 +1,7 @@
-export const defaultValues = {
+export const defaultValues={
     firstName:"",
     lastName: "",
     date:"",
     email:"",
-    password: "",
+    password:""
 }
