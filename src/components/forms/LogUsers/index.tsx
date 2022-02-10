@@ -1,20 +1,30 @@
-import { FC, FormEvent } from "react"
+import { yupResolver } from "@hookform/resolvers/yup"
+import { FC } from "react"
+import { useForm } from "react-hook-form"
 import { Link } from "react-router-dom"
+import { LogUserType } from "../../../types/models"
+import { defaultValues } from "./defaultValues"
+import { validationSchema } from "./validationSchema"
+
 
 const LogUsers: FC = () =>{
-    const handleSubmit = (e:FormEvent) =>{
-        e.preventDefault()
-        console.log("entre")
+    const {handleSubmit, register} =useForm({
+        defaultValues,
+        resolver: yupResolver(validationSchema),
+    })    
+    const onSubmit = (data:LogUserType) =>{
+        console.log(data)
 
     }
 
     return(
-        <form className="mb-3" onSubmit={handleSubmit}>
+        <form className="mb-3" onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-3 fs-5">
                     <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
                     <input
                         required
                         type="email" 
+                        {...register("email")}
                         className="form-control" 
                         id="exampleInputEmail1" 
                         aria-describedby="emailHelp"
@@ -25,6 +35,7 @@ const LogUsers: FC = () =>{
                     <label htmlFor="exampleInputPassword1" className="form-label">Contraseña</label>
                     <input
                         required
+                        {...register("password")}
                         type="password" 
                         className="form-control" 
                         id="exampleInputPassword1"

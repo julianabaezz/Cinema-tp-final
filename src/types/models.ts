@@ -6,3 +6,8 @@ export type AddUserType ={
     password: string
 
 }
+
+export type LogUserType={
+    email: string,
+    password: string
+}
