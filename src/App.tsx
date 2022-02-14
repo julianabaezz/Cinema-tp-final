@@ -6,10 +6,12 @@ import './components/layout/Layout/layout.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Home, Login, Signup, Admin, Detail, Movies, Series, Users } from './pages';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { UsersProvider } from './contexts';
 
 
 function App() {
   return(
+    <UsersProvider>
     <Router> 
       <Switch>
         <Route path='/admin' component={Admin}/>
@@ -21,7 +23,8 @@ function App() {
         <Route path='/users' component={Users}/>
         <Route path='/' component={Home}/>
       </Switch>
-    </Router> 
+    </Router>
+    </UsersProvider> 
 
   )
 }

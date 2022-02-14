@@ -5,17 +5,22 @@ import { AddUserType } from "../../../types/models"
 import { Link } from "react-router-dom"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { validationSchema } from "./validationSchema"
+import { useUsers } from "../../../hooks"
 
 const AddUsers: FC = () => {
+
+    const {addUser} = useUsers()
+    
+
     const { handleSubmit, register, formState } = useForm({
-        defaultValues,
-        
+        defaultValues,        
         resolver: yupResolver(validationSchema),
 
     })
 
     const onSubmit = (data: AddUserType) => {
         console.log(data)
+        addUser(data)
     }
 
 
@@ -81,6 +86,7 @@ const AddUsers: FC = () => {
                         id="exampleInputPassword1"
                         placeholder="Contraseña"
                     />
+                    <span className="text-danger">{formState.errors.password?.message}</span>
                 </div>
             </div>
             <button type="submit" className="mt-4 btn btn-dark">Crear cuenta</button>
