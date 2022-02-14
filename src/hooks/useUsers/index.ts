@@ -19,7 +19,13 @@ const useUsers = () =>{
         updateUsers?.(response)
     }
 
-    return {addUser, getUsers }
+    const deleteUsers = async(id:string)=>{
+        await usersApi.deleteUser(id)
+        getUsers()
+
+    }
+
+    return {addUser, getUsers, deleteUsers }
 }
 
 export {useUsers}

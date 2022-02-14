@@ -4,12 +4,18 @@ import { useUsers } from "../../../hooks"
 
 const UsersTable: FC = () => {
 
-    const {getUsers} = useUsers();
+    const {getUsers, deleteUsers} = useUsers();
     const {users} = useContext(UsersContext)
 
     useEffect(()=>{
         getUsers();
     },);
+
+    const deleteUser = (id:string) =>{
+        console.log("borrar")
+        deleteUsers(id)
+
+    }
 
     return (
         <>
@@ -24,13 +30,13 @@ const UsersTable: FC = () => {
                 </tr>
             </thead>
             <tbody>
-                {users?.map((user) =>(
-                
-                <tr>
+                {users?.map((user) =>(                
+                <tr key={user.id}>
                     <td>{user.firstName}</td>
                     <td>{user.lastName}</td>
                     <td>{user.date}</td>
                     <td>{user.email}</td>
+                    <td><button className="btn btn-outline-danger" onClick={() => {deleteUser(user.id)}}>Borrar usuario</button></td>
                 </tr>
                 
                 ))}
