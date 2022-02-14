@@ -1,6 +1,16 @@
-import { FC } from "react"
+import { FC, useContext, useEffect } from "react"
+import { UsersContext } from "../../../contexts";
+import { useUsers } from "../../../hooks"
 
 const UsersTable: FC = () => {
+
+    const {getUsers} = useUsers();
+    const {users} = useContext(UsersContext)
+
+    useEffect(()=>{
+        getUsers();
+    },);
+
     return (
         <>
         <h2 className="typo">Users</h2>
@@ -9,29 +19,22 @@ const UsersTable: FC = () => {
                 <tr>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
-                    <th scope="col">Email</th>
                     <th scope="col">Fecha de nacimiento</th>
+                    <th scope="col">Email</th>
                 </tr>
             </thead>
             <tbody>
+                {users?.map((user) =>(
+                
                 <tr>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>4/5/1970</td>
+                    <td>{user.firstName}</td>
+                    <td>{user.lastName}</td>
+                    <td>{user.date}</td>
+                    <td>{user.email}</td>
                 </tr>
-                <tr>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>7/6/2000</td>
-                </tr>
-                <tr>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                    <td>2/10/1990</td>
-                </tr>                
+                
+                ))}
+            
             </tbody>
         </table>
         </>

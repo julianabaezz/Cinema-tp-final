@@ -1,12 +1,25 @@
-// import { usersApi } from "../../api";
-import { AddUserType } from "../../types/models";
+import { useContext } from "react";
+import { usersApi } from "../../api";
+import { UsersContext } from "../../contexts";
+import { AddUserType} from "../../types/models";
 
 const useUsers = () =>{
-    const addUser= (datos: AddUserType) =>{
 
+    const {updateUsers} = useContext(UsersContext)
+
+    const addUser= async(datos: AddUserType) =>{     
+        
+        await usersApi.addUser(datos);
+        getUsers()
         
     };
-    return {addUser}
+
+    const getUsers = async()=>{
+        const response = await usersApi.getUsers();
+        updateUsers?.(response)
+    }
+
+    return {addUser, getUsers }
 }
 
 export {useUsers}
