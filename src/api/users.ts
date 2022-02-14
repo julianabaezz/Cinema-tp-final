@@ -12,4 +12,7 @@ const addUser = async (payload:AddUserType) =>{
    await api_users.post('/users.json', payload)
 }
 
-export const usersApi = { addUser, getUsers }
+const deleteUser = async(id:string) =>{
+   await api_users.delete(`/users/${id}.json`)
+}
+export const usersApi = { addUser, getUsers, deleteUser }
