@@ -1,10 +1,4 @@
-export type AddUserType ={
-    firstName: string,
-    lastName: string,
-    date: string,
-    email: string,
-    password: string
-}
+export type AddUserType = Omit<User, 'id'>;
 
 export type LogUserType={
     email: string,

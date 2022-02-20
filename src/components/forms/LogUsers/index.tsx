@@ -2,18 +2,23 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { FC } from "react"
 import { useForm } from "react-hook-form"
 import { Link } from "react-router-dom"
+import { useAuth} from "../../../hooks/auth"
 import { LogUserType } from "../../../types/models"
 import { defaultValues } from "./defaultValues"
 import { validationSchema } from "./validationSchema"
 
-
 const LogUsers: FC = () =>{
+    const {login} = useAuth()
     const {handleSubmit, register} =useForm({
         defaultValues,
         resolver: yupResolver(validationSchema),
     })    
-    const onSubmit = (data:LogUserType) =>{
-        console.log(data)
+   
+
+    const onSubmit = async (data:LogUserType) =>{
+        const response = await login(data);
+        localStorage.setItem("users", JSON.stringify(response));
+           
 
     }
 
