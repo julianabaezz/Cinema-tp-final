@@ -22,7 +22,6 @@ const useUsers = () =>{
     const deleteUsers = async(id:string)=>{
         await usersApi.deleteUser(id)
         getUsers()
-
     }
 
     return {addUser, getUsers, deleteUsers }
