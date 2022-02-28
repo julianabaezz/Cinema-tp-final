@@ -1,6 +1,7 @@
 import { FC } from "react"
 import { Layout } from "../../components"
 import { UsersTable } from "../../components/parts"
+import { withAuth } from "../../hoc"
 
 const Users: FC  = () => {
     return(
@@ -12,4 +13,4 @@ const Users: FC  = () => {
     )
 }
 
-export {Users}
+export const Usuario = withAuth(Users) 

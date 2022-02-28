@@ -5,6 +5,6 @@ import { Admin } from "./Admin";
 import { Detail } from "./Detail";
 import { Movies } from"./Movies";
 import { Series } from "./Series";
-import { Users } from "./Users";
+import { Usuario } from "./Users";
 
-export{Home, Login, Signup, Admin, Detail, Movies, Series, Users}
+export{Home, Login, Signup, Admin, Detail, Movies, Series, Usuario}

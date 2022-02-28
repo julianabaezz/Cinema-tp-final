@@ -13,12 +13,12 @@ const LogUsers: FC = () =>{
         defaultValues,
         resolver: yupResolver(validationSchema),
     })    
-   
+
 
     const onSubmit = async (data:LogUserType) =>{
         const response = await login(data);
         localStorage.setItem("users", JSON.stringify(response));
-           
+    
 
     }
 
