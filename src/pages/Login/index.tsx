@@ -1,6 +1,9 @@
+import { FC } from "react"
 import { LogUsers } from "../../components/forms"
+import { withAuth } from "../../hoc"
 
-const Login = () => {
+
+const LoginPage: FC = () => {
     return (
         <div className=" container-fluid login">
             <h1 className="typo display-2">Cinemada</h1>
@@ -15,4 +18,4 @@ const Login = () => {
     )
 }
 
-export { Login }
+export const Login = withAuth(LoginPage) 

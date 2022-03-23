@@ -1,6 +1,7 @@
 import { Layout } from "../../components";
+import { withAuth } from "../../hoc";
 
-const Home = () => {
+const HomePage = () => {
     return (
         <Layout>
             <div className="container-fluid home">
@@ -48,4 +49,4 @@ const Home = () => {
     )
 }
 
-export { Home }
+export  const Home = withAuth(HomePage) 
