@@ -91,8 +91,13 @@ const useAuth = () => {
             console.log(e);
         }
     };
+    
+    const logout = () =>{
+        localStorage.removeItem("cinemada-token");
+        push("/login")
+    }
 
-    return { login, loginWithToken, hasUserLoggedIn };
+    return { login, loginWithToken, logout, hasUserLoggedIn };
 };
 
 export { useAuth };
