@@ -1,6 +1,7 @@
 import { AddUsers } from "../../components/forms"
+import { withAuth } from "../../hoc"
 
-const Signup = () => {
+const SignupPage = () => {
     return (
         <div className=" container-fluid login">
             <h1 className="typo display-3">Cinemada</h1>
@@ -10,4 +11,4 @@ const Signup = () => {
     )
 }
 
-export { Signup }
+export const Signup = withAuth(SignupPage)

@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom"
+import { useAuth } from "../../../hooks/auth"
+
 
 const Header = () => {
+    const {logout} = useAuth()
     return (
         <header>
         <nav className='navbar navbar-expand-lg navbar-light'>
@@ -27,7 +30,8 @@ const Header = () => {
                             <Link className="nav-link" to="/admin">Admin</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/login">Salir</Link>
+                            <button className="nav-link" onClick={logout}>Salir</button>
+                            {/* <Link className="nav-link" to="/login">Salir</Link> */}
                         </li>
                     </ul>
                 </div>
