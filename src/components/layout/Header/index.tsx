@@ -2,8 +2,10 @@ import { Link } from "react-router-dom"
 import { useAuth } from "../../../hooks/auth"
 
 
+
 const Header = () => {
     const {logout} = useAuth()
+    
     return (
         <header>
         <nav className='navbar navbar-expand-lg navbar-light'>

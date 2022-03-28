@@ -2,12 +2,14 @@ import { FC } from "react"
 import { useForm } from "react-hook-form"
 import { defaultValues } from "./defaultValues"
 import { AddUserType } from "../../../types/models"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { validationSchema } from "./validationSchema"
 import { useUsers } from "../../../hooks"
 
 const AddUsers: FC = () => {
+
+    const {push} = useHistory()
 
     const {addUser} = useUsers()
     
@@ -21,6 +23,7 @@ const AddUsers: FC = () => {
     const onSubmit = (data: AddUserType) => {
         console.log(data)
         addUser(data)
+        push("/login")
     }
 
 
