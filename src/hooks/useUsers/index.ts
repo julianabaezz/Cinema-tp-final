@@ -19,8 +19,8 @@ const useUsers = () =>{
         updateUsers?.(response)
     }
 
-    const deleteUsers = async(id:string)=>{
-        await usersApi.deleteUser(id)
+    const deleteUsers = async(idDB:string)=>{
+        await usersApi.deleteUser(idDB)
         getUsers()
     }
 

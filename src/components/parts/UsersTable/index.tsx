@@ -9,11 +9,11 @@ const UsersTable: FC = () => {
 
     useEffect(()=>{
         getUsers();
-    },);
+    },[]);
 
-    const deleteUser = (id:string) =>{
+    const deleteUser = (idDB:string) =>{
         console.log("borrar")
-        deleteUsers(id)
+        deleteUsers(idDB)
 
     }
 
@@ -31,12 +31,12 @@ const UsersTable: FC = () => {
             </thead>
             <tbody>
                 {users?.map((user) =>(                
-                <tr key={user.id}>
+                <tr key={user.idDB}>
                     <td>{user.firstName}</td>
                     <td>{user.lastName}</td>
                     <td>{user.date}</td>
                     <td>{user.email}</td>
-                    <td><button className="btn btn-outline-danger" onClick={() => {deleteUser(user.id)}}>Borrar usuario</button></td>
+                    <td><button className="btn btn-outline-danger" onClick={() => {deleteUser(user.idDB)}}>Borrar usuario</button></td>
                 </tr>
                 
                 ))}

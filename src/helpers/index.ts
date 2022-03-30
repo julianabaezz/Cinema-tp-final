@@ -3,8 +3,8 @@ export const mapToArray = (object: any) => {
 
     for (const elem in object){
             array.push({
-            id: elem,
-            ...object[elem]
+                ...object[elem],
+                idDB: elem,
         })
     }
     return array

@@ -1,7 +1,10 @@
-// import { api_movies } from "../utils";
+// import { ApiResponse } from "../types/models";
+import { api_movies } from "../utils";
+// import { mapToArray } from "../helpers";
 
-const hola = () =>{
+const getItemsTMDB = async() =>{     
+        const response = await api_movies.get('movie/top_rated');
+        return (response.data.results)
+    }
 
-}
-
-export {hola}
+export const itemsApi = {getItemsTMDB}
