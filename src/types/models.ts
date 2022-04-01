@@ -17,6 +17,11 @@ export type User = {
 
 export type showUser = Omit<User, 'idDB'>
 
+export type Filter ={
+    page:number,
+    search: string | undefined
+}
+
 export type Items = {
     poster_path?: string;
     adult?: boolean;

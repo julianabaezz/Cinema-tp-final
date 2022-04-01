@@ -1,22 +1,31 @@
 // import { useEffect, useState } from "react";
-// import { itemsApi} from "../../api/moviesDB";
-// import { ApiResponse } from "../../types/models";
+import { itemsApi} from "../../api/moviesDB";
+import { Items } from "../../types/models";
 
 const useItems = () =>{
 
     // const [items, setItems] = useState()
-
-    // useEffect(() =>{
-    //     
-    // } )
-
-    // const getItems = async()=>{
-    //     const response: ApiResponse = await itemsApi.getItemsTMDB();
-    //     return response
+    
+    const getItems = async()=>{
+       const response = await itemsApi.getItemsFB();
+       return response
         
-    // }
+    }
+
+    const addItem= async(datos: Items) =>{     
+        
+        await itemsApi.addItemFB(datos);
+        getItems()
+        
+    };
+
+    const deleteItem = async(id:number) =>{
+        await itemsApi.deleteItemFB(id)
+        getItems()
+    }
 
 
+return {addItem, deleteItem, getItems}
 
 
 }

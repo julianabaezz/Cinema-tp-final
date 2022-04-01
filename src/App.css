@@ -10,3 +10,7 @@ body {
 .navbar{
   background-color: var(--main-bg-color);
 }
+
+.main{
+  padding: 2;
+}
