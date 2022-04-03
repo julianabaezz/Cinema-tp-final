@@ -35,6 +35,12 @@ const deleteItemFB = async (id:number) =>{
     
 }
 
+const getItem = async(idDB: string) =>{
+
+    const response = await api_DB.get(`/items/${idDB}.json`)
+    return response.data
+}
 
 
-export const itemsApi = {getItemsTMDB, searchMulti, addItemFB, getItemsFB, deleteItemFB}
+
+export const itemsApi = {getItemsTMDB, searchMulti, addItemFB, getItemsFB, deleteItemFB, getItem}

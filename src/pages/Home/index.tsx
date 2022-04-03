@@ -10,10 +10,10 @@ const HomePage = () => {
 
     return (
         <Layout>
-            <div className="container-fluid home">
-                <h1 className="typo">Home</h1> 
-                <h3 className="typo">Hola, {currentUser?.firstName}</h3>
-                <UserCards/>              
+            <h1 className="typo">Home</h1> 
+            <h3 className="typo">Hola, {currentUser?.firstName}</h3>
+            <div className="container home">
+                <UserCards/>         
 
             </div>
         </Layout>

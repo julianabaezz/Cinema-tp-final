@@ -1,16 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Notable&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Faster+One&family=Notable&family=Prompt:ital,wght@0,200;0,300;0,500;1,300;1,400&display=swap');
 body {
   margin: 0;
   --main-bg-color: #F7CD03;
 }
 .typo{
   font-family: 'Notable';
-
+}
+.cardTypo{
+  font-family: 'Prompt', sans-serif;
+  color: black;
+}
+.cardContainer{
+  padding: 2rem;
+}
+.cardTitle{
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
+  font-style: italic;
 }
 .navbar{
   background-color: var(--main-bg-color);
 }
-
-.main{
-  padding: 2;
+.cardDetail{
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 1.5rem
 }
+
