@@ -12,7 +12,7 @@ body {
   color: black;
 }
 .cardContainer{
-  padding: 2rem;
+  padding: 1.5rem;
 }
 .cardTitle{
   font-family: 'Prompt', sans-serif;
@@ -23,7 +23,7 @@ body {
   background-color: var(--main-bg-color);
 }
 .cardDetail{
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 1.5rem
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  padding: 1rem
 }
 

@@ -8,15 +8,25 @@ const getItemsTMDB = async() =>{
         return (response.data.results)
     }
 
+const getTrailerTMDB = async(id:number | undefined, media_type: string) =>{
+    let response
+    if(media_type==='tv') {
+        response= await api_movies.get(`tv/${id}/videos`)
+    } else{
+        response = await api_movies.get(`movie/${id}/videos`)
+    }
+    return response.data.results
+}
+
 const searchMulti = async({page, search}:Filter): Promise<ApiResponse> =>{
     let response
     if(search){
-        response = await api_movies.get(`search/multi?query=${search} &page=${page}`)
+        response = await api_movies.get<ApiResponse>(`search/multi?query=${search}&page=${page}`)
     } 
     else{
-        response = await api_movies.get(`movie/top_rated?`);
+        response = await api_movies.get<ApiResponse>(`movie/top_rated?page=${page}`);
     }
-    return response?.data
+    return response.data
 }
 
 const addItemFB = async (payload:Items) =>{
@@ -35,12 +45,11 @@ const deleteItemFB = async (id:number) =>{
     
 }
 
-const getItem = async(idDB: string) =>{
-
+const getItemFB = async(idDB: string)=>{
     const response = await api_DB.get(`/items/${idDB}.json`)
     return response.data
 }
 
 
 
-export const itemsApi = {getItemsTMDB, searchMulti, addItemFB, getItemsFB, deleteItemFB, getItem}
+export const itemsApi = {getItemsTMDB, searchMulti, addItemFB, getItemsFB, deleteItemFB, getItemFB, getTrailerTMDB}

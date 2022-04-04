@@ -38,6 +38,7 @@ export type Items = {
     vote_count?: number;
     video?: boolean;
     vote_average: number;
+    media_type: string;
 }
 
 
@@ -46,4 +47,17 @@ export type ApiResponse ={
     results: Items[],
     total_results: number,
     total_pages: number,
+}
+
+export type Trailer = {
+    iso_639_1: string,
+    iso_3166_1: string,
+    name: string,
+    key: string,
+    site: string,
+    size: number,
+    type: string,
+    official: boolean,
+    published_at: string,
+    id: string,
 }
