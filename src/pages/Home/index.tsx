@@ -13,7 +13,7 @@ const HomePage = () => {
             <h1 className="typo">Home</h1> 
             <h3 className="cardTypo">⚔️Hola, <span className="cardTitle"> {currentUser?.firstName}</span>⚔️</h3>
             <div className="container home">
-                <UserCards/>         
+                <UserCards/> 
 
             </div>
         </Layout>

@@ -1,12 +1,11 @@
 
-import { useContext, useEffect} from "react";
+import { FC, useContext, useEffect } from "react";
 import { Card, Row, Col, Button } from "react-bootstrap";
 import { useItems } from "../../../hooks/useItems";
 import { UsersContext } from "../../../contexts";
 import { Link } from "react-router-dom";
 
-
-const UserCards = () => {
+const UserCards: FC = () => {
     const { deleteItem, displayItemsFB, itemsFB } = useItems()
     const { currentUser } = useContext(UsersContext)
 
@@ -16,20 +15,25 @@ const UserCards = () => {
     }, [])
 
     return (
-
         <div>
             <Row xs={1} md={5} className="g-6">
+
                 {itemsFB?.map((item) => (
                     <Col key={item.idDB}>
                         <Card>
                             <Card.Img variant="top" src={`http://image.tmdb.org/t/p/w500${item.poster_path}`} />
                             <Card.Body>
-                                <Card.Title>{item.title}</Card.Title>
+                                {item.media_type === 'tv' && (
+                                    <Card.Title>{item.name}</Card.Title>
+                                )}
+                                {item.media_type !== 'tv' && (
+                                    <Card.Title>{item.title}</Card.Title>
+                                )}
                                 <Card.Text> {item.vote_average} </Card.Text>
                             </Card.Body>
                             <Card.Footer>
                                 {currentUser?.role === 'admin' && (
-                                    <Button variant="danger" onClick={() => { deleteItem(item.id)}}>Eliminar</Button>
+                                    <Button variant="danger" onClick={() => { deleteItem(item.id) }}>Eliminar</Button>
 
                                 )}
                                 {currentUser?.role !== 'admin' && (
@@ -41,7 +45,10 @@ const UserCards = () => {
                             </Card.Footer>
                         </Card>
                     </Col>
-                ))}
+                )
+
+
+                )}
             </Row>
         </div>
 

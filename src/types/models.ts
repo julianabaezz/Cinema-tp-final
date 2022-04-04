@@ -39,6 +39,7 @@ export type Items = {
     video?: boolean;
     vote_average: number;
     media_type: string;
+    name?: string;
 }
 
 

@@ -55,10 +55,6 @@ const useItems = () =>{
     const displayItemsFB = async() =>{
         await getItems().then((response) => { setItemsFB(response)})
     }
-    // const displayItemsMVDB =async() =>{
-    //     await itemsApi.getItemsTMDB().then((response) => { setItems(response)})
-    // }
-
 
 return {addItem, deleteItem, getItems, getDetail, setDetail, displayItemsFB, setPageParams, setSearchParams, items, itemDetail, itemsFB, page }
 
