@@ -1,11 +1,15 @@
+import { Container } from "react-bootstrap"
 import { Layout } from "../../components"
-const Admin = () =>{
-    return(
+import { AdminCards } from "../../components/parts"
+const Admin = () => {
+    return (
         <Layout>
-            <h2>Admin</h2>
-
+            <Container>
+                <h2>Seleccioná una película:</h2>
+            <AdminCards />
+            </Container>
         </Layout>
     )
 }
 
-export {Admin}
+export { Admin }

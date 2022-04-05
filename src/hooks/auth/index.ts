@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { UsersContext } from "../../contexts";
 import { mapToArray } from "../../helpers";
 import { LogUserType, User } from "../../types/models";
-import { api_users } from "../../utils";
+import { api_DB } from "../../utils";
 // import {useUsers} from "../useUsers"
 
 
@@ -33,7 +33,7 @@ const useAuth = () => {
     const createUserToken = async (user: User) => {
         const newToken = Math.random().toString(36).substring(2);
         try {
-            await api_users.patch(`/users/${user.id}.json`, { sessionToken: newToken });
+            await api_DB.patch(`/users/${user.idDB}.json`, { sessionToken: newToken });
             return newToken;
         } catch (err) {
             return null;
@@ -42,7 +42,7 @@ const useAuth = () => {
 
     const login = async (payload: LogUserType) => {
         try {
-            const response = await api_users.get("/users.json");
+            const response = await api_DB.get("/users.json");
             const users: User[] = mapToArray(response.data);
             const loggedUser = users.find(
                 (user) =>
@@ -74,7 +74,7 @@ const useAuth = () => {
     const loginWithToken = async() => {
         console.log(tokenStorage);
         try {
-            const response = await api_users.get("/users.json");
+            const response = await api_DB.get("/users.json");
             const users: User[] = mapToArray(response.data);
             const loggedUser = users.find(
                 (user) => user.sessionToken === tokenStorage

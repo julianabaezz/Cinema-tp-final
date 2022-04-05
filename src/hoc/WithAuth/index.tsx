@@ -1,7 +1,7 @@
 import { FC } from "react"
 // import { UsersContext } from "../../contexts";
 import { useAuth } from "../../hooks/auth";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 // import { Login } from "../../pages";
 import { Loading } from "../../common";
 
@@ -21,16 +21,16 @@ type WithAuthenticationFn = (Component:FC) => FC;
 const withAuth: WithAuthenticationFn = (Component) =>{
     
     const Authenticated:FC = (): JSX.Element | null =>{
-        const {push, location} = useHistory()
+        const {location} = useHistory()
         const {hasUserLoggedIn} = useAuth()
         
         // const {currentUser} = useContext(UsersContext)
         
         if(hasUserLoggedIn === undefined) return <Loading/>;
 
-        if (hasUserLoggedIn && publicRoutes.includes(location.pathname)) push ("/");
+        if (hasUserLoggedIn && publicRoutes.includes(location.pathname)) <Redirect to="/login"/>;
 
-        if (hasUserLoggedIn === false && !publicRoutes.includes(location.pathname)) push ("/login");
+        if (hasUserLoggedIn === false && !publicRoutes.includes(location.pathname)) <Redirect to="/login"/>;
             
         
         return <Component/>

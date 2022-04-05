@@ -1,8 +1,9 @@
 import { Layout } from "../../components"
+import { DetailCard } from "../../components/parts"
 const Detail  = () => {
     return(
         <Layout>
-            <h2>Detail</h2>
+            <DetailCard/>
         </Layout>
         
         )

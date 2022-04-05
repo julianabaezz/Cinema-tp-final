@@ -1,12 +1,17 @@
+import { useContext } from "react"
 import { Link } from "react-router-dom"
+import { UsersContext } from "../../../contexts"
 import { useAuth } from "../../../hooks/auth"
+
 
 
 const Header = () => {
     const {logout} = useAuth()
+    const {currentUser} = useContext(UsersContext)
+    
     return (
         <header>
-        <nav className='navbar navbar-expand-lg navbar-light'>
+        <nav className= "navbar navbar-expand-lg navbar-light">
             <div className="container-fluid">
                 <Link className="navbar-brand typo" to="/">CINEMADA</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,12 +28,16 @@ const Header = () => {
                         <li className="nav-item">
                             <Link className="nav-link" to="/series">Series</Link>
                         </li>
+                        {currentUser?.role === 'admin' && (
                         <li className="nav-item">
                             <Link className="nav-link" to="/users">Users</Link>
                         </li>
+                        )}
+                        {currentUser?.role === 'admin' && (
                         <li className="nav-item">
                             <Link className="nav-link" to="/admin">Admin</Link>
                         </li>
+                        )}
                         <li className="nav-item">
                             <button className="nav-link" onClick={logout}>Salir</button>
                             {/* <Link className="nav-link" to="/login">Salir</Link> */}
