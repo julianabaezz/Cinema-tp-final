@@ -1,6 +1,9 @@
+import { FC } from "react"
 import { Layout } from "../../components"
 import { TvCards } from "../../components/parts/TvCards"
-const Series  = () => {
+import { withAuth } from "../../hoc"
+
+const SeriesPage: FC  = () => {
     return(
         <Layout>
             <h2>Series</h2>
@@ -11,4 +14,4 @@ const Series  = () => {
     )
 }
 
-export {Series}
+export const Series = withAuth(SeriesPage)

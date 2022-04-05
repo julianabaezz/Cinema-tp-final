@@ -1,6 +1,9 @@
+import { FC } from "react"
 import { Layout } from "../../components"
 import { DetailCard } from "../../components/parts"
-const Detail  = () => {
+import { withAuth } from "../../hoc"
+
+const DetailPage: FC  = () => {
     return(
         <Layout>
             <DetailCard/>
@@ -9,4 +12,4 @@ const Detail  = () => {
         )
 }
 
-export {Detail}
+export const Detail = withAuth(DetailPage)
