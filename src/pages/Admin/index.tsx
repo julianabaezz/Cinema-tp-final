@@ -1,7 +1,10 @@
+import { FC } from "react"
 import { Container } from "react-bootstrap"
 import { Layout } from "../../components"
 import { AdminCards } from "../../components/parts"
-const Admin = () => {
+import { withAuth } from "../../hoc"
+
+const AdminPage : FC= () => {
     return (
         <Layout>
             <Container>
@@ -12,4 +15,4 @@ const Admin = () => {
     )
 }
 
-export { Admin }
+export const Admin = withAuth(AdminPage)

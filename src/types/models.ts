@@ -13,6 +13,7 @@ export type User = {
     role: string,
     sessionToken: string
     idDB: string,
+    viewed?: number[]
 }
 
 export type showUser = Omit<User, 'idDB'>

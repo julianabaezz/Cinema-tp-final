@@ -1,4 +1,5 @@
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
 import { FC, useContext, useEffect } from "react";
 import { Card, Row, Col, Button } from "react-bootstrap";
 import { useItems } from "../../../hooks/useItems";
@@ -6,7 +7,7 @@ import { UsersContext } from "../../../contexts";
 import { Link } from "react-router-dom";
 
 const UserCards: FC = () => {
-    const { deleteItem, displayItemsFB, itemsFB } = useItems()
+    const { deleteItem, displayItemsFB, addItemViewed, deleteItemViewed, itemsViewed, itemsFB } = useItems()
     const { currentUser } = useContext(UsersContext)
 
 
@@ -31,16 +32,27 @@ const UserCards: FC = () => {
                                 )}
                                 <Card.Text> {item.vote_average} </Card.Text>
                             </Card.Body>
+                                {currentUser?.role !== 'admin' && (
+                                
+                                    <Link to={`/detail/${item.idDB}`} className="warning">Detalle</Link>
+                                
+                                )}
                             <Card.Footer>
                                 {currentUser?.role === 'admin' && (
                                     <Button variant="danger" onClick={() => { deleteItem(item.id) }}>Eliminar</Button>
 
                                 )}
-                                {currentUser?.role !== 'admin' && (
+                                {currentUser?.role !== 'admin' && !itemsViewed(currentUser, item.id) &&
 
-                                    <Link to={`/detail/${item.idDB}`} className="warning">Detalle</Link>
+                                    <Button variant="warning" onClick={() => addItemViewed(currentUser, item.id)}><FontAwesomeIcon icon={faEye}></FontAwesomeIcon></Button>
 
-                                )}
+                                }
+                                {currentUser?.role !== 'admin' && itemsViewed(currentUser, item.id) &&
+
+                                    <Button variant="warning" onClick={() => deleteItemViewed(currentUser, item.id)}><FontAwesomeIcon icon={faEyeSlash}></FontAwesomeIcon></Button>
+
+                                }
+
 
                             </Card.Footer>
                         </Card>

@@ -1,34 +1,36 @@
 import { useEffect, useState} from "react";
 import { useHistory } from "react-router-dom";
 import { itemsApi} from "../../api/moviesDB";
-import { ApiResponse, Items } from "../../types/models";
+import { ApiResponse, Items, User } from "../../types/models";
+import { api_DB } from "../../utils";
+import {usersApi } from "../../api/users";
 
 const useItems = () =>{
     const params = new URLSearchParams(window.location.search)
     const page = Number(params.get("page")) || 1
     const search = params.get("search") || undefined
     const {push} = useHistory()
-    
-    
     const [items, setItems] = useState<ApiResponse>()
 
+    //SEARCH MULTI
     useEffect(() => {
         itemsApi
         .searchMulti({page, search})
         .then((response) => setItems(response))
     }, [page, search])
 
+    //PAGE PARAMS
     const setPageParams = (page: number) =>{
         params.set("page", page.toString())
         push(`${window.location.pathname}?${params.toString()}`)        
 
     }
-
+    //SEARCH PARAMS
     const setSearchParams= (input: string) =>{
         params.set("search", input)
         push(`${window.location.pathname}?${params.toString()}`)
     }
-
+    //USE ITEMS FB
     const getItems = async()=>{
         const response = await itemsApi.getItemsFB();
         return response
@@ -55,8 +57,30 @@ const useItems = () =>{
     const displayItemsFB = async() =>{
         await getItems().then((response) => { setItemsFB(response)})
     }
+    //ITEM VIEWED
+    const {getUsers} = usersApi
 
-return {addItem, deleteItem, getItems, getDetail, setDetail, displayItemsFB, setPageParams, setSearchParams, items, itemDetail, itemsFB, page }
+    const addItemViewed = async(currentUser: Partial<User | undefined>, item:number) =>{
+        const itemsViewed = currentUser?.viewed || [];
+        itemsViewed.push(item)
+        await api_DB.patch(`/users/${currentUser?.idDB}.json`, { viewed: itemsViewed})
+        getUsers()
+
+    
+    }
+    const deleteItemViewed = async(currentUser: Partial<User | undefined>, item: number) =>{
+        const itemsViewed = currentUser?.viewed?.filter((i) => i !== item)
+        await api_DB.patch(`/users/${currentUser?.idDB}.json`, { viewed: itemsViewed})
+        getUsers()
+    }
+
+    const itemsViewed = (currentUser: Partial<User | undefined>, id: number) =>{
+        const itemViewed = currentUser?.viewed?.includes(id)
+        return itemViewed
+    }
+
+
+return {addItem, deleteItem, getItems, getDetail, setDetail, displayItemsFB, setPageParams, setSearchParams, addItemViewed, deleteItemViewed, itemsViewed, items, itemDetail, itemsFB, page }
 
 }
 

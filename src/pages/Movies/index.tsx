@@ -1,6 +1,9 @@
 import { Layout } from "../../components"
 import { MovieCards } from "../../components/parts"
-const Movies  = () => {
+import { withAuth } from "../../hoc"
+
+
+const MoviesPage  = () => {
     return(
         <Layout>
             <h2>Movies</h2>
@@ -9,5 +12,5 @@ const Movies  = () => {
     )
 }
 
-export {Movies}
+export const Movies = withAuth(MoviesPage)
 
