@@ -10,8 +10,12 @@ const HomePage = () => {
 
     return (
         <Layout>
+            <div className="heading">
             <h1 className="typo">Home</h1> 
-            <h3 className="cardTypo">⚔️Hola, <span className="cardTitle"> {currentUser?.firstName}</span>⚔️</h3>
+            <h3>⚔️</h3>
+            <h3 className="cardTypo">Hola, <span className="cardTitle"> {currentUser?.firstName}</span></h3>
+            </div>
+
             <div className="container home">
                 <UserCards/> 
 

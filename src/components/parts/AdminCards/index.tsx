@@ -14,10 +14,10 @@ const AdminCards:FC = () => {
             <div className="form-label m-3 p-3">
                 <SearchItems handleChange={setSearchParams} />
             </div>
-            <Row xs={1} md={5} className="g-6">
+            <Row xs={1} md={4} className="g-6">
                 {items?.results.map((item) => (
                     <Col key={item.idDB}>
-                        <Card>
+                        <Card className="cardDetail">
                             <Card.Img variant="top" src={`http://image.tmdb.org/t/p/w500${item.poster_path}`} />
                             <Card.Body>
                                 {item.media_type === 'tv' && (

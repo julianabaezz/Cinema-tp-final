@@ -41,7 +41,7 @@ const getItemsFB = async ():Promise<Items[]> =>{
 const deleteItemFB = async (id:number) =>{
     const response = await getItemsFB()
     const foundItem = response.find((item) => item.id === id)
-    api_DB.delete(`/items/${foundItem?.idDB}.json`)
+    await api_DB.delete(`/items/${foundItem?.idDB}.json`)
     
 }
 

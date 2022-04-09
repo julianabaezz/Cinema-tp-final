@@ -4,6 +4,7 @@ import { itemsApi} from "../../api/moviesDB";
 import { ApiResponse, Items, User } from "../../types/models";
 import { api_DB } from "../../utils";
 import {usersApi } from "../../api/users";
+import {useAuth} from "../auth"
 
 const useItems = () =>{
     const params = new URLSearchParams(window.location.search)
@@ -11,6 +12,9 @@ const useItems = () =>{
     const search = params.get("search") || undefined
     const {push} = useHistory()
     const [items, setItems] = useState<ApiResponse>()
+    const [itemDetail, setDetail] = useState<Items>()
+    const [itemsFB, setItemsFB] = useState<Items[]>()
+    const{loginWithToken} =useAuth()
 
     //SEARCH MULTI
     useEffect(() => {
@@ -33,10 +37,10 @@ const useItems = () =>{
     //USE ITEMS FB
     const getItems = async()=>{
         const response = await itemsApi.getItemsFB();
-        return response
+        setItemsFB(response)
+        // return response
         
     }
-
     const addItem= async(datos: Items) =>{        
         await itemsApi.addItemFB(datos);
         getItems()
@@ -44,34 +48,35 @@ const useItems = () =>{
     };
 
     const deleteItem = async(id:number) =>{
-        await itemsApi.deleteItemFB(id)
-        getItems()
+        await itemsApi.deleteItemFB(id)   
+        getItems()     
+
     }
-    const [itemDetail, setDetail] = useState<Items>()
+ 
 
     const getDetail= async(id:string) =>{
         await itemsApi.getItemFB(id).then((response) => { setDetail(response)})
     }
-    const [itemsFB, setItemsFB] = useState<Items[]>()
+ 
 
-    const displayItemsFB = async() =>{
-        await getItems().then((response) => { setItemsFB(response)})
-    }
+    // const displayItemsFB = async() =>{
+    //     await getItems().then((response) => { setItemsFB(response)})
+    // }
     //ITEM VIEWED
-    const {getUsers} = usersApi
 
     const addItemViewed = async(currentUser: Partial<User | undefined>, item:number) =>{
         const itemsViewed = currentUser?.viewed || [];
         itemsViewed.push(item)
         await api_DB.patch(`/users/${currentUser?.idDB}.json`, { viewed: itemsViewed})
-        getUsers()
-
+        loginWithToken()
+        
     
     }
     const deleteItemViewed = async(currentUser: Partial<User | undefined>, item: number) =>{
         const itemsViewed = currentUser?.viewed?.filter((i) => i !== item)
         await api_DB.patch(`/users/${currentUser?.idDB}.json`, { viewed: itemsViewed})
-        getUsers()
+        loginWithToken()
+
     }
 
     const itemsViewed = (currentUser: Partial<User | undefined>, id: number) =>{
@@ -80,7 +85,7 @@ const useItems = () =>{
     }
 
 
-return {addItem, deleteItem, getItems, getDetail, setDetail, displayItemsFB, setPageParams, setSearchParams, addItemViewed, deleteItemViewed, itemsViewed, items, itemDetail, itemsFB, page }
+return {addItem, deleteItem, getItems, getDetail, setDetail, /*displayItemsFB,*/ setPageParams, setSearchParams, addItemViewed, deleteItemViewed, itemsViewed, items, itemDetail, itemsFB, page }
 
 }
 

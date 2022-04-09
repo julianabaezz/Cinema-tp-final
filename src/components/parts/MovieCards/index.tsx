@@ -7,12 +7,12 @@ import { Link } from "react-router-dom";
 
 
 const MovieCards: FC = () => {
-    const { deleteItem, displayItemsFB, itemsFB } = useItems()
+    const { deleteItem, itemsFB, getItems } = useItems()
     const { currentUser } = useContext(UsersContext)
 
 
     useEffect(() => {
-        displayItemsFB()
+        getItems()
     }, [])
 
     return (

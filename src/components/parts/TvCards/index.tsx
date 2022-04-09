@@ -5,12 +5,12 @@ import { UsersContext } from "../../../contexts";
 import { Link } from "react-router-dom";
 
 const TvCards: FC = () => {
-    const { deleteItem, displayItemsFB, itemsFB } = useItems()
+    const { deleteItem, itemsFB, getItems } = useItems()
     const { currentUser } = useContext(UsersContext)
 
 
     useEffect(() => {
-        displayItemsFB()
+        getItems()
     }, [])
 
     return (

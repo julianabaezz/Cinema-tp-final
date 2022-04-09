@@ -1,19 +1,26 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
-import { FC, useContext, useEffect } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { Card, Row, Col, Button } from "react-bootstrap";
 import { useItems } from "../../../hooks/useItems";
 import { UsersContext } from "../../../contexts";
 import { Link } from "react-router-dom";
 
 const UserCards: FC = () => {
-    const { deleteItem, displayItemsFB, addItemViewed, deleteItemViewed, itemsViewed, itemsFB } = useItems()
+    const { deleteItem, getItems, addItemViewed, deleteItemViewed, itemsViewed, itemsFB } = useItems()
     const { currentUser } = useContext(UsersContext)
+
+    // const changeDisplay = () =>{
+    //     display ? setDisplay(false) : setDisplay(true)
+    // }
 
 
     useEffect(() => {
-        displayItemsFB()
-    }, [])
+        getItems()
+    },[])
+
+    console.log(itemsFB);
+    
 
     return (
         <div>
@@ -21,7 +28,7 @@ const UserCards: FC = () => {
 
                 {itemsFB?.map((item) => (
                     <Col key={item.idDB}>
-                        <Card>
+                        <Card className="cardDetail" >
                             <Card.Img variant="top" src={`http://image.tmdb.org/t/p/w500${item.poster_path}`} />
                             <Card.Body>
                                 {item.media_type === 'tv' && (
@@ -39,7 +46,7 @@ const UserCards: FC = () => {
                                 )}
                             <Card.Footer>
                                 {currentUser?.role === 'admin' && (
-                                    <Button variant="danger" onClick={() => { deleteItem(item.id) }}>Eliminar</Button>
+                                    <Button variant="danger" onClick={() => {deleteItem(item.id);}}>Eliminar</Button>
 
                                 )}
                                 {currentUser?.role !== 'admin' && !itemsViewed(currentUser, item.id) &&
