@@ -1,0 +1,1 @@
+export {api_movies, api_DB} from "./axios"

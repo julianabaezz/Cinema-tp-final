@@ -1,0 +1,7 @@
+export {UsersTable} from "./UsersTable"
+export {AdminCards} from "./AdminCards"
+export{UserCards} from "./UserCards"
+export {DetailCard} from "./Detail"
+export {Pagination} from "./Pagination"
+export {SearchItems} from "./Search"
+export {MovieCards} from "./MovieCards"

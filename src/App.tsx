@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import './pages/Home/home.css'
+import './pages/Login/login.css'
+import './components/layout/Layout/layout.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Home, Login, Signup, Admin, Detail, Movies, Series, Usuario } from './pages';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { UsersProvider } from './contexts';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  
+  return(
+    <UsersProvider>
+    <Router> 
+      <Switch>
+        <Route path='/admin' component={Admin}/>
+        <Route path='/detail/:id' component={Detail}/>
+        <Route path='/movies' component={Movies}/>
+        <Route path='/login' component={Login}/>
+        <Route path='/series' component={Series}/>
+        <Route path='/signup' component={Signup}/>
+        <Route path='/users' component={Usuario}/>
+        <Route path='/' component={Home}/>
+      </Switch>
+    </Router>
+    </UsersProvider> 
+
+  )
 }
 
 export default App;
