@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useContext, useEffect } from "react";
 import { Card, Row, Col, Button } from "react-bootstrap";
 import { useItems } from "../../../hooks/useItems";
 import { UsersContext } from "../../../contexts";
