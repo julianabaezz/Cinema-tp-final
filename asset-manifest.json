@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Cinema-tp-final/static/css/main.535c13f4.css",
+    "main.js": "/Cinema-tp-final/static/js/main.a622bf88.js",
+    "static/media/kill-bill.png": "/Cinema-tp-final/static/media/kill-bill.055647f881962fafa035.png",
+    "static/media/blood.png": "/Cinema-tp-final/static/media/blood.6cdcba497770afc67933.png",
+    "index.html": "/Cinema-tp-final/index.html",
+    "main.535c13f4.css.map": "/Cinema-tp-final/static/css/main.535c13f4.css.map",
+    "main.a622bf88.js.map": "/Cinema-tp-final/static/js/main.a622bf88.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.535c13f4.css",
+    "static/js/main.a622bf88.js"
+  ]
+}
